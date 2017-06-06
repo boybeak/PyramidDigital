@@ -1,0 +1,16 @@
+c:\workspace\金译彩\金译彩\bin\Debug\金译彩.exe.config
+c:\workspace\金译彩\金译彩\bin\Debug\金译彩.exe
+c:\workspace\金译彩\金译彩\bin\Debug\金译彩.pdb
+c:\workspace\金译彩\金译彩\obj\Debug\金译彩.csprojResolveAssemblyReference.cache
+c:\workspace\金译彩\金译彩\obj\Debug\金译彩.Properties.Resources.resources
+c:\workspace\金译彩\金译彩\obj\Debug\金译彩.csproj.GenerateResource.Cache
+c:\workspace\金译彩\金译彩\obj\Debug\金译彩.exe
+c:\workspace\金译彩\金译彩\obj\Debug\金译彩.pdb
+c:\workspace\金译彩\金译彩\obj\Debug\金译彩.MainForm.resources
+c:\workspace\金译彩\金译彩\obj\Debug\Interop.Excel.dll
+c:\workspace\金译彩\金译彩\obj\Debug\Interop.Office.dll
+c:\workspace\金译彩\金译彩\obj\Debug\Interop.VBIDE.dll
+c:\workspace\金译彩\金译彩\obj\Debug\金译彩.csproj.ResolveComReference.cache
+c:\workspace\金译彩\金译彩\bin\Debug\Excel.dll
+c:\workspace\金译彩\金译彩\bin\Debug\ICSharpCode.SharpZipLib.dll
+c:\workspace\金译彩\金译彩\bin\Debug\Excel.pdb

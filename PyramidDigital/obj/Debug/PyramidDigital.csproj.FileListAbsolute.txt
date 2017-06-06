@@ -1,0 +1,16 @@
+C:\workspace\PyramidDigital\PyramidDigital\bin\Debug\金译彩.exe.config
+C:\workspace\PyramidDigital\PyramidDigital\bin\Debug\金译彩.exe
+C:\workspace\PyramidDigital\PyramidDigital\bin\Debug\金译彩.pdb
+C:\workspace\PyramidDigital\PyramidDigital\bin\Debug\Excel.dll
+C:\workspace\PyramidDigital\PyramidDigital\bin\Debug\ICSharpCode.SharpZipLib.dll
+C:\workspace\PyramidDigital\PyramidDigital\bin\Debug\Excel.pdb
+C:\workspace\PyramidDigital\PyramidDigital\obj\Debug\PyramidDigital.csprojResolveAssemblyReference.cache
+C:\workspace\PyramidDigital\PyramidDigital\obj\Debug\Interop.Excel.dll
+C:\workspace\PyramidDigital\PyramidDigital\obj\Debug\Interop.Office.dll
+C:\workspace\PyramidDigital\PyramidDigital\obj\Debug\Interop.VBIDE.dll
+C:\workspace\PyramidDigital\PyramidDigital\obj\Debug\PyramidDigital.csproj.ResolveComReference.cache
+C:\workspace\PyramidDigital\PyramidDigital\obj\Debug\金译彩.MainForm.resources
+C:\workspace\PyramidDigital\PyramidDigital\obj\Debug\金译彩.Properties.Resources.resources
+C:\workspace\PyramidDigital\PyramidDigital\obj\Debug\PyramidDigital.csproj.GenerateResource.Cache
+C:\workspace\PyramidDigital\PyramidDigital\obj\Debug\金译彩.exe
+C:\workspace\PyramidDigital\PyramidDigital\obj\Debug\金译彩.pdb
