@@ -64,6 +64,7 @@ namespace 金译彩
         private void newGrid (int columnCount)
         {
             tipLable.Text = "开始创建";
+            resetMainGridView();
             for (int c = 0; c < columnCount; c++)
             {
                 DataGridViewTextBoxColumn column = new DataGridViewTextBoxColumn();
@@ -100,6 +101,7 @@ namespace 金译彩
             OpenFileDialog openFileDialog = new OpenFileDialog();
             if (openFileDialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
             {
+                resetMainGridView();
                 string path = openFileDialog.FileName;
                 string fileExt = Path.GetExtension(path); //get the file extension  
                 if (fileExt.CompareTo(".xlsx") == 0)
