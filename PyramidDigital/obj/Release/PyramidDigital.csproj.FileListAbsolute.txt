@@ -1,0 +1,16 @@
+C:\Git\PyramidDigital\PyramidDigital\bin\Release\金译彩.exe.config
+C:\Git\PyramidDigital\PyramidDigital\bin\Release\金译彩.exe
+C:\Git\PyramidDigital\PyramidDigital\bin\Release\金译彩.pdb
+C:\Git\PyramidDigital\PyramidDigital\bin\Release\Excel.dll
+C:\Git\PyramidDigital\PyramidDigital\bin\Release\ICSharpCode.SharpZipLib.dll
+C:\Git\PyramidDigital\PyramidDigital\bin\Release\Excel.pdb
+C:\Git\PyramidDigital\PyramidDigital\obj\Release\Interop.Excel.dll
+C:\Git\PyramidDigital\PyramidDigital\obj\Release\Interop.Office.dll
+C:\Git\PyramidDigital\PyramidDigital\obj\Release\Interop.VBIDE.dll
+C:\Git\PyramidDigital\PyramidDigital\obj\Release\PyramidDigital.csproj.ResolveComReference.cache
+C:\Git\PyramidDigital\PyramidDigital\obj\Release\金译彩.MainForm.resources
+C:\Git\PyramidDigital\PyramidDigital\obj\Release\金译彩.Properties.Resources.resources
+C:\Git\PyramidDigital\PyramidDigital\obj\Release\PyramidDigital.csproj.GenerateResource.Cache
+C:\Git\PyramidDigital\PyramidDigital\obj\Release\金译彩.exe
+C:\Git\PyramidDigital\PyramidDigital\obj\Release\金译彩.pdb
+C:\Git\PyramidDigital\PyramidDigital\obj\Release\PyramidDigital.csprojResolveAssemblyReference.cache

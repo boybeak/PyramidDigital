@@ -71,7 +71,7 @@ namespace 金译彩
                 column.HeaderText = (c + 1) + "";
                 column.Width = 30;
                 column.SortMode = DataGridViewColumnSortMode.NotSortable;
-                column.Frozen = false;
+                //column.Frozen = false;
                 column.Resizable = DataGridViewTriState.False;
                 mainGridView.Columns.Add(column);
             }
@@ -231,6 +231,11 @@ namespace 金译彩
                     object objA = cellA.Value;
                     object objB = cellB.Value;
 
+                    if (objA == null || objB == null)
+                    {
+                        break;
+                    }
+
                     int valueA = -1, valueB = -1;
                     try
                     {
@@ -331,11 +336,6 @@ namespace 金译彩
             tipLable.Text = "保存完成";
         }
 
-        private void MainForm_Load(object sender, EventArgs e)
-        {
-
-        }
-
         private void MainForm_FormClosed(object sender, FormClosedEventArgs e)
         {
             if (mWorkingThread != null && mWorkingThread.IsAlive)
@@ -344,16 +344,82 @@ namespace 金译彩
             }
         }
 
-        /*public DataSet ReadExcel(string fileName, string fileExt)
+        private void toolStripButtonAddColumn_Click(object sender, EventArgs e)
         {
-            FileStream stream = File.Open(fileName, FileMode.Open, FileAccess.Read);
-            IExcelDataReader excelReader = ExcelReaderFactory.CreateOpenXmlReader(stream);
-            DataSet result = excelReader.AsDataSet();
-            excelReader.Close();
-            return result.Tables[0];
+            if (mWorkingThread != null && mWorkingThread.IsAlive)
+            {
+                MessageBox.Show("有任务正在运行中,请稍后再试");
+                return;
+            }
+            decimal result = Prompt.ShowDialog("请填写添加列数", "添加列");
+            int columnCount = Convert.ToInt32(result);
+            if (columnCount <= 0)
+            {
+                return;
+            }
+            if (columnCount >= 1000)
+            {
+                MessageBox.Show("输入数字过大,暂时支持1000以内");
+                return;
+            }
+            tipLable.Text = "开始添加";
+            int count = mainGridView.ColumnCount;
+            for (int i = 0; i < columnCount; i++)
+            {
+                DataGridViewTextBoxColumn column = new DataGridViewTextBoxColumn();
+                column.HeaderText = (count + i + 1) + "";
+                column.Width = 30;
+                column.SortMode = DataGridViewColumnSortMode.NotSortable;
+                //column.Frozen = false;
+                column.Resizable = DataGridViewTriState.False;
+                
+                mainGridView.Columns.Add(column);
 
+                DataGridViewRow row = new DataGridViewRow();
+
+                row.Resizable = DataGridViewTriState.False;
+                mainGridView.Rows.Insert(0, row);
+            }
+            for (int i = 0; i < mainGridView.RowCount; i++)
+            {
+                mainGridView.Rows[i].HeaderCell.Value = (i + 1) + "";
+            }
             
-        }*/
+            tipLable.Text = "添加完成";
+
+        }
+
+        private void mainGridView_ColumnHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            
+            int[] array = new int[10];
+            
+            for (int i = mainGridView.RowCount - 1; i >= 0; i--)
+            {
+                DataGridViewCell cell = mainGridView.Rows[i].Cells[e.ColumnIndex];
+                object obj = cell.Value;
+                if (obj == null)
+                {
+                    break;
+                }
+                int value = -1;
+                try
+                {
+                    value = Convert.ToInt32(obj);
+                    array[value]++;
+                }
+                catch (Exception ex)
+                {
+                    break;
+                }
+            }
+            string text = "第" + (e.ColumnIndex + 1) + "数据统计为:\n";
+            for (int i = 0; i < array.Length; i++)
+            {
+                text += i + "     " + array[i] + "个\n";
+            }
+            dataLabel.Text = text;
+        }
 
     }
 
