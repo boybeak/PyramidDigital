@@ -14,3 +14,8 @@ C:\Git\PyramidDigital\PyramidDigital\obj\Release\PyramidDigital.csproj.GenerateR
 C:\Git\PyramidDigital\PyramidDigital\obj\Release\金译彩.exe
 C:\Git\PyramidDigital\PyramidDigital\obj\Release\金译彩.pdb
 C:\Git\PyramidDigital\PyramidDigital\obj\Release\PyramidDigital.csprojResolveAssemblyReference.cache
+C:\Git\PyramidDigital\PyramidDigital\bin\Release\NPOI.dll
+C:\Git\PyramidDigital\PyramidDigital\bin\Release\NPOI.OOXML.dll
+C:\Git\PyramidDigital\PyramidDigital\bin\Release\NPOI.OpenXml4Net.dll
+C:\Git\PyramidDigital\PyramidDigital\bin\Release\NPOI.OpenXmlFormats.dll
+C:\Git\PyramidDigital\PyramidDigital\bin\Release\NPOI.xml

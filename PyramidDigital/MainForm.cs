@@ -1,4 +1,6 @@
 ﻿using Excel;
+using NPOI.SS.UserModel;
+using NPOI.XSSF.UserModel;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -27,6 +29,8 @@ namespace 金译彩
             this.Text = "金译彩";
             this.StartPosition = FormStartPosition.CenterScreen;
             this.ClientSize = new Size(800, 600);
+
+            Control.CheckForIllegalCrossThreadCalls = false;
         }
 
         private void resetMainGridView ()
@@ -84,11 +88,11 @@ namespace 金译彩
                 mainGridView.Rows.Add(row);
             }
             tipLable.Text = "创建完成";
-            /*Random rnd = new Random();
+            Random rnd = new Random();
             for (int c = 0; c < columnCount; c++)
             {
                 mainGridView.Rows[columnCount - 1].Cells[c].Value = rnd.Next(0, 10);
-            }*/
+            }
         }
 
         private void toolStripButtonOpen_Click(object sender, EventArgs e)
@@ -108,58 +112,31 @@ namespace 金译彩
                 {
                     try
                     {
-                        FileStream stream = File.Open(path, FileMode.Open, FileAccess.Read);
-                        IExcelDataReader excelReader = ExcelReaderFactory.CreateOpenXmlReader(stream);
-                        excelReader.IsFirstRowAsColumnNames = true;
-                        DataSet result = excelReader.AsDataSet();
-                        
-                        int count = excelReader.ResultsCount;
-                        int fieldCount = excelReader.FieldCount;
-                        int depth = excelReader.Depth;
+                        FileStream fs = new FileStream(path, FileMode.Open, FileAccess.Read);
 
-                        newGrid(fieldCount);
-
-                        Console.WriteLine("count=" + count + " fieldCount=" + fieldCount + " depth=" + depth);
-                        DataReader reader = new DataReader(excelReader, mainGridView, tipLable);
-                        mWorkingThread = new Thread(new ThreadStart(reader.doOpen));
-                        mWorkingThread.Start();
-                        /*int r = 0;
-                        while(excelReader.Read())
+                        IWorkbook workbook = new XSSFWorkbook(fs);//从流内容创建Workbook对象
+                        ISheet sheet = workbook.GetSheetAt(0);//获取第一个工作表
+                        IRow headerRow = sheet.GetRow(0);//获取工作表第一行
+                        int columnCount = headerRow.Cells.Count;
+                        newGrid(columnCount);
+                        for (int i = 0; i < columnCount; i++)
                         {
-                            for (int c = 0; c < fieldCount; c++)
+                            mainGridView.Columns[i].HeaderText = headerRow.Cells[i].StringCellValue;
+                        }
+                        for (int i = 0; i < columnCount; i++)
+                        {
+                            IRow row = sheet.GetRow(i + 1);
+                            for (int j = columnCount - 1 - i; j < columnCount; j++)
                             {
-                                Int32 value = excelReader.GetInt32(c);
-                                if (value < 0)
-                                {
-                                    continue;
-                                }
-                                if (r == 0)
-                                {
-                                    mainGridView.Columns[c].HeaderText = value + "";
-                                }
-                                else
-                                {
-                                    mainGridView.Rows[r - 1].Cells[c].Value = value;
-                                }
-
-                                Console.WriteLine("excel[" + r + "][" + c + "]=" + value);
+                                ICell cell = row.GetCell(j);//获取行的第一列
+                                string value = cell.ToString();//获取列的值
+                                mainGridView.Rows[i].Cells[j].Value = value;
                             }
-                            r++;
+
+
                         }
                         
-                        excelReader.Close();
-                        
-                        //resetMainGridView();
-                        
-                        for (int i = 0; i < mainGridView.Columns.Count; i++)
-                        {
-                            DataGridViewColumn column = mainGridView.Columns[i];
-                            column.HeaderText = (i + 1) + "";
-                            column.Width = 30;
-                            column.SortMode = DataGridViewColumnSortMode.NotSortable;
-                            column.Frozen = false;
-                            column.Resizable = DataGridViewTriState.False;
-                        }*/
+
                     }
                     catch (Exception ex)
                     {
@@ -191,7 +168,7 @@ namespace 金译彩
                 //MessageBox.Show("toolStripButtonSave_Click file=" + saveFileDialog1.FileName);
                 //mWorkingThread = new Thread(() => save(saveFileDialog.FileName));
                 DataSaver ds = new DataSaver(mainGridView, tipLable, saveFileDialog.FileName);
-                mWorkingThread = new Thread(new ThreadStart(ds.doSave));
+                mWorkingThread = new Thread(new ThreadStart(ds.doSave3));
                 mWorkingThread.Start();
             }
         }

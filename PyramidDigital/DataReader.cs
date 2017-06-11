@@ -1,6 +1,9 @@
 ﻿using Excel;
+using NPOI.SS.UserModel;
+using NPOI.XSSF.UserModel;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -10,66 +13,43 @@ namespace 金译彩
 {
     class DataReader
     {
-        private IExcelDataReader excelReader;
         private DataGridView gridView;
         private ToolStripLabel tipLabel;
 
-        private int fieldCount;
+        private String targetFilePath;
 
-        public DataReader (IExcelDataReader reader, DataGridView gv, ToolStripLabel tip)
+        public DataReader (String path, DataGridView gv, ToolStripLabel tip)
         {
-            excelReader = reader;
+            targetFilePath = path;
             gridView = gv;
             tipLabel = tip;
-            fieldCount = excelReader.FieldCount;
         }
 
-        public void doOpen ()
+        public void doOpen2 ()
         {
-            tipLabel.Text = "开始读取";
-            int r = 0;
-            while (excelReader.Read())
+            FileStream fs = new FileStream(targetFilePath, FileMode.Open, FileAccess.Read);
+
+            IWorkbook workbook = new XSSFWorkbook(fs);//从流内容创建Workbook对象
+            ISheet sheet = workbook.GetSheetAt(0);//获取第一个工作表
+            IRow headerRow = sheet.GetRow(0);//获取工作表第一行
+            int columnCount = headerRow.Cells.Count;
+            for (int i = 0; i < columnCount; i++)
             {
-                tipLabel.Text = "开始读取第" + r + "行";
-                for (int c = 0; c < fieldCount; c++)
+                gridView.Columns[i].HeaderText = headerRow.Cells[i].StringCellValue;
+            }
+            for (int i = 0; i < columnCount; i++)
+            {
+                IRow row = sheet.GetRow(i + 1);
+                for (int j = columnCount - 1 - i; j >= 0; j--)
                 {
-                    Int32 value = excelReader.GetInt32(c);
-                    if (value < 0)
-                    {
-                        continue;
-                    }
-                    if (r == 0)
-                    {
-                        gridView.Columns[c].HeaderText = value + "";
-                    }
-                    else
-                    {
-                        gridView.Rows[r - 1].Cells[c].Value = value;
-                    }
-
-                    Console.WriteLine("excel[" + r + "][" + c + "]=" + value);
+                    ICell cell = row.GetCell(j);//获取行的第一列
+                    string value = cell.ToString();//获取列的值
+                    gridView.Rows[i].Cells[j].Value = value;
                 }
-                r++;
+                
+                
             }
-
-            excelReader.Close();
-
-            //resetMainGridView();
-
-            for (int i = 0; i < gridView.Columns.Count; i++)
-            {
-                DataGridViewColumn column = gridView.Columns[i];
-                column.HeaderText = (i + 1) + "";
-                column.Width = 30;
-                column.SortMode = DataGridViewColumnSortMode.NotSortable;
-                column.Frozen = false;
-                column.Resizable = DataGridViewTriState.False;
-            }
-            tipLabel.Text = "读取成功";
-
-            gridView = null;
-            tipLabel = null;
-            excelReader = null;
+            
         }
 
     }

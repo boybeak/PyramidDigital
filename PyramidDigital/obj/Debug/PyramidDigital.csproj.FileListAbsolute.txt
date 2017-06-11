@@ -17,9 +17,7 @@ C:\workspace\PyramidDigital\PyramidDigital\obj\Debug\金译彩.pdb
 C:\Git\PyramidDigital\PyramidDigital\bin\Debug\金译彩.exe.config
 C:\Git\PyramidDigital\PyramidDigital\bin\Debug\金译彩.exe
 C:\Git\PyramidDigital\PyramidDigital\bin\Debug\金译彩.pdb
-C:\Git\PyramidDigital\PyramidDigital\bin\Debug\Excel.dll
 C:\Git\PyramidDigital\PyramidDigital\bin\Debug\ICSharpCode.SharpZipLib.dll
-C:\Git\PyramidDigital\PyramidDigital\bin\Debug\Excel.pdb
 C:\Git\PyramidDigital\PyramidDigital\obj\Debug\PyramidDigital.csprojResolveAssemblyReference.cache
 C:\Git\PyramidDigital\PyramidDigital\obj\Debug\Interop.Excel.dll
 C:\Git\PyramidDigital\PyramidDigital\obj\Debug\Interop.Office.dll
@@ -30,3 +28,8 @@ C:\Git\PyramidDigital\PyramidDigital\obj\Debug\金译彩.Properties.Resources.re
 C:\Git\PyramidDigital\PyramidDigital\obj\Debug\PyramidDigital.csproj.GenerateResource.Cache
 C:\Git\PyramidDigital\PyramidDigital\obj\Debug\金译彩.exe
 C:\Git\PyramidDigital\PyramidDigital\obj\Debug\金译彩.pdb
+C:\Git\PyramidDigital\PyramidDigital\bin\Debug\NPOI.dll
+C:\Git\PyramidDigital\PyramidDigital\bin\Debug\NPOI.OOXML.dll
+C:\Git\PyramidDigital\PyramidDigital\bin\Debug\NPOI.OpenXml4Net.dll
+C:\Git\PyramidDigital\PyramidDigital\bin\Debug\NPOI.OpenXmlFormats.dll
+C:\Git\PyramidDigital\PyramidDigital\bin\Debug\NPOI.xml
