@@ -87,11 +87,11 @@ namespace 金译彩
                 mainGridView.Rows.Add(row);
             }
             tipLable.Text = "创建完成";
-            Random rnd = new Random();
+            /*Random rnd = new Random();
             for (int c = 0; c < columnCount; c++)
             {
                 mainGridView.Rows[columnCount - 1].Cells[c].Value = rnd.Next(0, 10);
-            }
+            }*/
         }
 
         private void toolStripButtonOpen_Click(object sender, EventArgs e)
@@ -111,6 +111,7 @@ namespace 金译彩
                 {
                     try
                     {
+                        tipLable.Text = "开始打开";
                         FileStream fs = new FileStream(path, FileMode.Open, FileAccess.Read);
 
                         IWorkbook workbook = new XSSFWorkbook(fs);//从流内容创建Workbook对象
@@ -134,12 +135,13 @@ namespace 金译彩
 
 
                         }
-                        
+                        tipLable.Text = "打开完成";
 
                     }
                     catch (Exception ex)
                     {
                         MessageBox.Show(ex.Message.ToString());
+                        tipLable.Text = "打开失败";
                     }
                 }
                 else
@@ -254,10 +256,7 @@ namespace 金译彩
 
         private void MainForm_FormClosed(object sender, FormClosedEventArgs e)
         {
-            if (mWorkingThread != null && mWorkingThread.IsAlive)
-            {
-                mWorkingThread.Interrupt();
-            }
+            
         }
 
         private void toolStripButtonAddColumn_Click(object sender, EventArgs e)
@@ -337,6 +336,28 @@ namespace 金译彩
             dataLabel.Text = text;
         }
 
+        private void MainForm_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (mWorkingThread != null && mWorkingThread.IsAlive)
+            {
+                if (MessageBox.Show("有任务运行中,是否确认退出程序？", "退出", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
+                {
+                    mWorkingThread.Interrupt();
+                    // 关闭所有的线程
+                    this.Dispose();
+                    this.Close();
+                }
+                else
+                    e.Cancel = true;
+                
+            }
+            
+        }
     }
 
     public static class Prompt
